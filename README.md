@@ -1,6 +1,6 @@
 # Mnist-Model-Deploy
 
-[Original file is located at Google Colab](https://colab.research.google.com/github/Vatsalparsaniya/Mnist-Model-Deploy/blob/master/__init__.ipynb)
+[Original file is located at Google Colab](https://colab.research.google.com/github/Vatsalparsaniya/Mnist-Model-Deploy/blob/master/__init__.ipynb) <a href="https://colab.research.google.com/github/Vatsalparsaniya/Mnist-Model-Deploy/blob/master/__init__.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 ## WebApp using Flask with Google Colab of MNIST model Deploy 
 
