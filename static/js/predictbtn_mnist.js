@@ -10,7 +10,8 @@
 
 $(document).ready(function(){
     $('#predbtn').click(function () {
-        var form_data = new FormData($('#upload-file-model')[0]);
+        var tags = $('#upload-file-model')
+        var form_data = new FormData(tags[0]);
         
         $.ajax({
             type: 'POST',   
