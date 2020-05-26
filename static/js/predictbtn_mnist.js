@@ -1,11 +1,11 @@
-var fileName = 50
+// var fileName = 50
 
-$(document).ready(function(){
-    $('input[type="file"]').change(function(e){
-        fileName = e.target.files[0].name;
-        // alert('The file "' + fileName +  '" has been selected.');
-    });
-});
+// $(document).ready(function(){
+//     $('input[type="file"]').change(function(e){
+//         fileName = e.target.files[0].name;
+//         // alert('The file "' + fileName +  '" has been selected.');
+//     });
+// });
 
 
 $(document).ready(function(){
@@ -25,8 +25,7 @@ $(document).ready(function(){
                 // $('#resultModel').fadeIn(600);
 
                 $('#resultModel').text(' Predicted Number :  ' + data);
-                console.log(fileName)
-                $('#image_div1').attr('src','/get-mnist-image/'+fileName)
+                $('#image_div1').attr('src','/get-mnist-image/generated_bar.PNG');
             },
         });
     });    

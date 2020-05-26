@@ -47,7 +47,7 @@ def mnist_prediction():
             plt.figure()
             y_pos = np.arange(10)
             plt.bar(y_pos, predictions[0])
-            plt.savefig('generated_image/'+f.filename)
+            plt.savefig('generated_image/generated_bar.PNG')
 
             return str(number)
 
