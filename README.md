@@ -1,4 +1,7 @@
-# MNIST-Model-Deploy
+# MNIST-Model-Deploy :   [https://mnistwebapp.herokuapp.com/](https://mnistwebapp.herokuapp.com/)
+
+
+#### On Google Colab Ipynb file
 
 [Original file is located at Google Colab](https://colab.research.google.com/github/Vatsalparsaniya/Mnist-Model-Deploy/blob/master/__init__.ipynb) <a href="https://colab.research.google.com/github/Vatsalparsaniya/Mnist-Model-Deploy/blob/master/__init__.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
