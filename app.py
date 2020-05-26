@@ -1,8 +1,7 @@
-import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 from flask import Flask, flash, redirect, render_template, request, url_for, send_from_directory,abort
-
+from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 
 mnist_model = load_model('model\mnist.h5')
@@ -11,7 +10,7 @@ app = Flask(__name__)
 
 app.secret_key = 'vatsalparsaniya'
 
-app.config["MNIST_BAR"] = "generated_image/mnist_vis"
+app.config["MNIST_BAR"] = "generated_image"
 app.config["IMAGES"] = "upload"
 
 @app.route('/')
@@ -31,12 +30,16 @@ def mnist_prediction():
         else:
             f =  request.files['file']
             f.save("uploads/"+f.filename)
-            image_gray  = cv2.imread("uploads/"+f.filename, cv2.IMREAD_GRAYSCALE)
-            img_resize = cv2.resize(image_gray,(28,28))
-            image_bw = cv2.threshold(img_resize, 75, 255, cv2.THRESH_BINARY)[1]
-            bitwise_not_image = cv2.bitwise_not(image_bw, mask=None)
-            pred_img = np.reshape(bitwise_not_image,(1,28,28,1))/255.0
-
+            tf_image = image.load_img("uploads/"+f.filename, 
+                            grayscale=True, 
+                            color_mode='rgb', 
+                            target_size=(28,28),
+                            interpolation='nearest'
+                            )
+            np_image = image.img_to_array(tf_image)
+            
+            pred_img = np.reshape(np_image,(1,28,28,1))/255.0
+            pred_img = 1 - pred_img
             predictions = mnist_model.predict(pred_img)
             number = int(np.argmax(predictions))
             print(number)
@@ -44,7 +47,7 @@ def mnist_prediction():
             plt.figure()
             y_pos = np.arange(10)
             plt.bar(y_pos, predictions[0])
-            plt.savefig('generated_image/mnist_vis/'+f.filename)
+            plt.savefig('generated_image/'+f.filename)
 
             return str(number)
 
@@ -57,5 +60,5 @@ def get_mnist_image(image_name):
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(threaded=True)
 
