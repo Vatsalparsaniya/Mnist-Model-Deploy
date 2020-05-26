@@ -52,3 +52,6 @@
       
  
 ![MNIST Webapp](https://github.com/Vatsalparsaniya/Mnist-Model-Deploy/blob/master/static/image/mnist.PNG)
+
+
+![MNIST Webapp](https://github.com/Vatsalparsaniya/Mnist-Model-Deploy/blob/master/static/image/mnist1.PNG)
