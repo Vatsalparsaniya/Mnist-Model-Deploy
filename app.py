@@ -1,5 +1,3 @@
-
-
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -57,5 +55,7 @@ def get_mnist_image(image_name):
     except FileNotFoundError:
         abort(404)
 
-app.run()
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
