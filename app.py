@@ -4,7 +4,7 @@ from flask import Flask, flash, redirect, render_template, request, url_for, sen
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 
-mnist_model = load_model('model\mnist.h5')
+mnist_model = load_model('model/mnist.h5')
 
 app = Flask(__name__)
 
