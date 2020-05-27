@@ -10,26 +10,27 @@
 ## WebApp using Flask with Google Colab of MNIST model Deploy 
 
 #### Handle Post request using Flask
+
     @app.route('/mnistprediction/', methods=['GET', 'POST'])
-    def mnist_prediction():
-        if request.method == "POST":
-            if not request.files['file'].filename:
-                flash("No File Found")
-            else:
-                f =  request.files['file']
-                f.save("uploads/"+f.filename)
-                image_gray  = cv2.imread("uploads/"+f.filename, cv2.IMREAD_GRAYSCALE)
-                img_resize = cv2.resize(image_gray,(28,28))
-                image_bw = cv2.threshold(img_resize, 75, 255, cv2.THRESH_BINARY)[1]
-                bitwise_not_image = cv2.bitwise_not(image_bw, mask=None)
-                pred_img = np.reshape(bitwise_not_image,(1,28,28,1))/255.0
-                predictions = mnist_model.predict(pred_img)
-                number = int(np.argmax(predictions))
-                plt.figure()
-                y_pos = np.arange(10)
-                plt.bar(y_pos, predictions[0])
-                plt.savefig('generated_image/mnist_vis/'+f.filename)
-                return str(number)
+        def mnist_prediction():
+            if request.method == "POST":
+                if not request.files['file'].filename:
+                    flash("No File Found")
+                else:
+                    f =  request.files['file']
+                    f.save("uploads/"+f.filename)
+                    tf_image = image.load_img("uploads/"+f.filename, 
+                                    grayscale=True, 
+                                    color_mode='rgb', 
+                                    target_size=(28,28),
+                                    interpolation='nearest'
+                                    )
+                    np_image = image.img_to_array(tf_image)
+                    pred_img = np.reshape(np_image,(1,28,28,1))/255.0
+                    pred_img = 1 - pred_img
+                    predictions = mnist_model.predict(pred_img)
+                    number = int(np.argmax(predictions))
+                    return str(number)
                 
 #### Prediction Button AJAX request
 
