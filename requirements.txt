@@ -1,6 +1,6 @@
 ﻿numpy==1.18.4
 Flask==1.1.2
-tensorflow-cpu==2.2.1
+tensorflow-cpu==2.5.1
 matplotlib==3.2.1
 gunicorn
 pillow
